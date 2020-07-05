@@ -7,6 +7,11 @@ This program was designed for house of worship and other similar applications wh
 but with a lighting console that only accepts midi show control. This program is designed as a bridge between software such as ProPresenter, Ableton Live, 
 Loop Community Prime, and Multitracks.com Playback and Lighting consoles. 
 
+# Dependencies Required:
+- Python 3 (Program built and tested on 3.7)
+- Kivy: https://kivy.org/
+- Python-rtmidi:  https://pypi.org/project/python-rtmidi/
+
 
 # How it works:
 After setting the input and output midi ports, the program listens for Note On commands on the Input Port. When it detects a Note on message, it then parses the data and generates a Midi Show Control Command, which is then sent out to the Output Port designated.
