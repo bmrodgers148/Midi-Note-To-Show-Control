@@ -1,0 +1,480 @@
+<HomePage>
+	inputPort: inputPort
+	outputPort: outputPort
+	expandedMode: expandedMode
+	currentCuelist: currentCuelist
+	msgType: msgType
+	channel: channel
+	note: note 
+	command: command
+	mscdata: mscdata
+	rawMidiIn: rawMidiIn
+	rawMidiOut: rawMidiOut
+
+	id: homePage 
+	canvas:
+		Rectangle:
+			size: 10, root.height - root.height*.15
+			pos: (root.width / 2 - 5), 0
+
+	FloatLayout:
+		size: root.width, root.height
+
+#Top Row of Menu Buttons
+		Button:
+			pos_hint: {"x": 0, "top": 1}
+			size_hint: (1/3, .15)
+			font_size: '15dp'
+			id: home
+			text: 'Home'
+			background_normal: ''
+			background_color: (0.5, 0.5, 0.5, 1)
+			on_press: app.homePage()
+
+
+		Button:
+			pos_hint: {"x": 1/3, "top": 1}
+			size_hint: (1/3, .15)
+			id: Settings
+			text: 'Settings'
+			on_press: app.settingsPage()
+
+		Button:
+			pos_hint: {"x": 2/3, "top": 1}
+			size_hint: (1/3, .15)
+			id: calculator
+			text: 'Midi Calculator'
+			on_press: app.calculatorPage()
+		
+#left Side Labels
+		Label:
+			pos_hint: {"x": 0., "y": .675}
+			size_hint: (.5, .25)
+			font_size: '30sp'
+			bold: True 
+			color: (0, 0, 0, 1)
+			text: 'Program Status'
+			markup: True 
+
+		Label:
+			id:inputPort
+			halign: 'left'
+			pos_hint: {"x": 0.05, "y": .6}
+			size_hint: (.45, .25)
+			font_size: '20sp'
+			bold: True 
+			color: (0, 0, 0, 1)
+			text: 'Input Port'
+			text_size: self.size
+			markup: True 
+			
+		Label:
+			id: outputPort
+			halign: 'left'
+			pos_hint: {"x": 0.05, "y": .45}
+			size_hint: (.45, .25)
+			font_size: '20sp'
+			bold: True 
+			color: (0, 0, 0, 1)
+			text_size: self.size
+			markup: True 
+			
+
+		Label:
+			id: expandedMode
+			halign: 'left'
+			pos_hint: {"x": 0.05, "y": .35}
+			size_hint: (.45, .25)
+			font_size: '20sp'
+			bold: True 
+			color: (0, 0, 0, 1)
+			text: 'Expanded Mode State'
+			text_size: self.size
+			markup: True 
+
+		Label: 
+			id: currentCuelist
+			halign: 'left'
+			pos_hint: {"x": 0.05, "y": .25}
+			size_hint: (.45, .25)
+			font_size: '20sp'
+			bold: True 
+			color: (0, 0, 0, 1)
+			text_size: self.size
+			markup: True 
+			text: "Current Cuelist"
+
+#right side labels
+		Label:
+			pos_hint: {"x": 0.5, "y": .675}
+			size_hint: (.5, .25)
+			font_size: '30sp'
+			bold: True 
+			color: (0, 0, 0, 1)
+			text: 'Last Message'
+			markup: True 
+		Label:
+			id:msgType
+			halign: 'left'
+			pos_hint: {"x": 0.55, "y": .675}
+			size_hint: (.45, .25)
+			font_size: '20sp'
+			bold: True 
+			color: (0, 0, 0, 1)
+			text: 'Type:'
+			text_size: self.size
+			markup: True 
+
+		Label:
+			id:channel
+			halign: 'left'
+			pos_hint: {"x": 0.55, "y": .6}
+			size_hint: (.45, .25)
+			font_size: '20sp'
+			bold: True 
+			color: (0, 0, 0, 1)
+			text: 'Channel:'
+			text_size: self.size
+			markup: True 
+
+		Label:
+			id:note
+			halign: 'left'
+			pos_hint: {"x": 0.55, "y": .525}
+			size_hint: (.45, .25)
+			font_size: '20sp'
+			bold: True 
+			color: (0, 0, 0, 1)
+			text: 'Note:        Velocity:     '
+			text_size: self.size
+			markup: True 
+
+		Label:
+			id:command
+			halign: 'left'
+			pos_hint: {"x": 0.55, "y": .45}
+			size_hint: (.45, .25)
+			font_size: '20sp'
+			bold: True 
+			color: (0, 0, 0, 1)
+			text: 'Command:'
+			text_size: self.size
+			markup: True 
+
+		Label:
+			id:mscdata
+			halign: 'left'
+			pos_hint: {"x": 0.55, "y": .375}
+			size_hint: (.45, .25)
+			font_size: '20sp'
+			bold: True 
+			color: (0, 0, 0, 1)
+			text: 'Cue:          Cuelist:          '
+			text_size: self.size
+			markup: True 
+
+		Label:
+			id:rawMidiIn
+			halign: 'left'
+			pos_hint: {"x": 0.55, "y": .3}
+			size_hint: (.45, .25)
+			font_size: '20sp'
+			bold: True 
+			color: (0, 0, 0, 1)
+			text: 'Raw Midi In:'
+			text_size: self.size
+			markup: True 
+
+		Label:
+			id:rawMidiOut
+			halign: 'left'
+			valign: 'top'
+			pos_hint: {"x": 0.55, "y": .05}
+			size_hint: (.45, .25)
+			font_size: '20sp'
+			bold: True 
+			color: (0, 0, 0, 1)
+			text: 'Raw Midi Out:'
+			text_size: self.size
+			markup: True 
+
+
+<SettingsPage>
+	
+	inSelect: inSelect 
+	outSelect: outSelect 
+	expSelect: expSelect
+	cmdFormat: cmdFormat
+	devID: devID
+
+	id: settingsPage 
+
+	FloatLayout:
+
+		size: root.width, root.height
+
+#Top Row of Menu Buttons
+		Button:
+			pos_hint: {"x": 0, "top": 1}
+			size_hint: (1/3, .15)
+			id: home
+			text: 'Home'
+			on_press: app.homePage()
+
+
+
+		Button:
+			pos_hint: {"x": 1/3, "top": 1}
+			size_hint: (1/3, .15)
+			id: Settings
+			text: 'Settings'
+			background_normal: ''
+			background_color: (0.5, 0.5, 0.5, 1)
+			on_press: app.settingsPage()
+			
+		Button:
+			pos_hint: {"x": 2/3, "top": 1}
+			size_hint: (1/3, .15)
+			id: calculator
+			text: 'Midi Calculator'
+			on_press: app.calculatorPage()
+
+#Settings Interface
+		Label:
+			pos_hint: {'y': .75, 'center_x': .5}
+			size_hint: (.7, .1)
+			color: (0, 0, 0, 1)
+			text: 'Program Settings'
+			halign: 'center'
+			font_size: '30sp'
+			bold: True
+
+		GridLayout:
+			cols: 2
+			pos_hint: {'center_y': .45, 'center_x': .45}
+			size_hint: (.95, .6)
+			spacing: 10
+			padding: 10
+
+			Label: 
+				text: "Input Port: "
+				halign: 'right'
+				font_size: '20sp'
+				text_size: (self.size[0] - 200, None)
+				bold: True 
+				color: (0, 0, 0, 1)
+
+			Spinner: #Input Port Selector
+				id: inSelect
+				text: app.midiSession.availableInPort[app.midiSession.inPort]
+				values: app.midiSession.availableInPort
+				on_text: root.inSpinnerSet(inSelect.text)
+
+				
+			Label:
+				text: "Output Port: "
+				halign: 'right'
+				text_size: (self.size[0] - 200, None)
+				font_size: '20sp'
+				bold: True 
+				color: (0, 0, 0, 1)
+
+
+			Spinner: #Output Port Selector
+				id: outSelect
+				text: app.midiSession.availableOutPort[app.midiSession.outPort]
+				values: app.midiSession.availableOutPort
+				on_text: root.outSpinnerSet(outSelect.text)
+
+			Label:
+				text: "Expanded Mode: "
+				halign: 'right'
+				text_size: (self.size[0] - 200, None)
+				font_size: '20sp'
+				bold: True 
+				color: (0, 0, 0, 1)
+
+			Switch: #Expanded Mode Switch
+				id: expSelect
+				active: app.midiSession.expandedMode
+
+			Label: 
+				text: "MSC Command Format: "
+				halign: 'right'
+				text_size: (self.size[0] - 200, None)
+				font_size: '20sp'
+				bold: True 
+				color: (0, 0, 0, 1)
+
+			TextInput:
+				id: cmdFormat
+				text: str(app.midiSession.MSCCmdFormat)
+				font_size: '20sp'
+
+			Label:
+				text: "MSC Device ID: "
+				halign: 'right'
+				text_size: (self.size[0] - 200, None)
+				font_size: '20sp'
+				bold: True 
+				color: (0, 0, 0, 1)
+
+			TextInput:
+				id: devID
+				text: str(app.midiSession.MSCDeviceID)
+				font_size: '20sp'
+
+		Button:
+			size_hint: (.75, .1)
+			pos_hint: {'center_x': .5, 'y': .05}
+			text: "Save Changes"
+			font_size: '20sp'
+			bold: True
+			on_press: root.saveSettings()
+
+<CalculatorPage>
+	resultlabel: resultlabel
+	cueNum: cueNum 
+	cuelist: cuelist
+	expMode: expMode
+	commandSelect: commandSelect
+
+	id: calculatorPage 
+
+	FloatLayout:
+		size: root.width, root.height
+
+#Top Row of Menu Buttons
+		Button:
+			pos_hint: {"x": 0, "top": 1}
+			size_hint: (1/3, .15)
+			id: home
+			text: 'Home'
+			on_press: app.homePage()
+
+
+
+		Button:
+			pos_hint: {"x": 1/3, "top": 1}
+			size_hint: (1/3, .15)
+			id: Settings
+			text: 'Settings'
+			
+			on_press: app.settingsPage()
+			
+		Button:
+			pos_hint: {"x": 2/3, "top": 1}
+			size_hint: (1/3, .15)
+			id: calculator
+			text: 'Midi Calculator'
+			background_normal: ''
+			background_color: (0.5, 0.5, 0.5, 1)
+			on_press: app.calculatorPage()
+
+#Calculator Interface
+		Label:
+			text: 'Midi Note Calculator'
+			size_hint: (1, .1)
+			pos_hint: {'center_x': .5, 'y': .75}
+			font_size: '30sp'
+			bold: True
+			halign: 'center'
+			color: (0,0,0,1)
+			text_size: (self.size)
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint: (1, .75)
+
+#input Side
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint: (.5, 1)
+				spacing: 10
+				padding: 10
+
+				GridLayout:
+					cols: 2
+					size_hint: (1, .6)
+					spacing: 10
+					padding: 10
+
+					Label:
+						size_hint: (.6, .2)
+						color: (0, 0, 0, 1)
+						bold: True 
+						text: 'Select Command: '
+						font_size: '20sp'
+						text_size: (self.size)
+
+					Spinner:
+						id: commandSelect
+						size_hint: (.3, .2)
+						text: 'GO'
+						values: ['GO', 'Set Cuelist', 'OPEN', 'STOP', 'RESUME', 'CLOSE', 'ALL_OFF', 'GO_OFF']
+						on_text: root.setCmdSelTxt(commandSelect.text)
+
+					Label:
+						size_hint: (.6, .2)
+						color: (0, 0, 0, 1)
+						bold: True 
+						text: 'Cuelist: '
+						font_size: '20sp'
+						text_size: (self.size)
+
+					TextInput:
+						id: cuelist 
+						size_hint: (.3, .2)
+						font_size: '20sp'
+						text: '0'
+						multiline: False
+						on_text_validate: root.calculate()
+
+
+					Label:
+						size_hint: (.6, .2)
+						color: (0, 0, 0, 1)
+						bold: True 
+						text: 'Cue Number: '
+						font_size: '20sp'
+						text_size: (self.size)
+
+					TextInput:
+						id: cueNum
+						size_hint: (.3, .2)
+						font_size: '20sp'
+						text: '0'
+						multiline: False
+						on_text_validate: root.calculate()
+
+					Label:
+						size_hint: (.6, .2)
+						color: (0, 0, 0, 1)
+						bold: True 
+						text: 'Expanded Mode: '
+						font_size: '20sp'
+						text_size: (self.size)
+
+					Switch:
+						size_hint: (.3, .2)
+						id: expMode
+						active: app.midiSession.expandedMode
+
+
+
+
+				Button:
+					size_hint: (1, .3)
+					text:'Calculate'
+					on_press: root.calculate()
+
+#output side
+			Label: 
+				id: resultlabel
+				color: (0, 0, 0, 1)
+				valign: 'top'
+				pos_hint: {'x': .5, 'y': 0}
+				size_hint: (.5, 1)
+				font_size: 50
+				text_size: (self.size)
+				markup: True
+

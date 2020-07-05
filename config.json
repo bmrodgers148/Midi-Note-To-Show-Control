@@ -1,0 +1,7 @@
+{
+ "MSCCmdFormat": "0x01",
+ "MSCDeviceID": 1,
+ "expandedMode": true,
+ "inPort": 2,
+ "outPort": 1
+}

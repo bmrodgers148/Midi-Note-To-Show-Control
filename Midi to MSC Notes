@@ -1,0 +1,20 @@
+Take midi notes and translate to MSC
+
+Midi Channel determines mode for MSC and command type
+
+Include options in configuration settings for simple and expanded modes
+	Simple mode: One midi channel for Go Commands, Note is Cuelist, Velocity is Cue
+	Expanded mode: send midi to select cuelist on one midi channel, and cue number on a seperate midi channel, allowing more than 128 values for each. 
+
+Channel 1 : Simple mode Go Command; expanded mode Cue Number
+Channel 2: expanded mode, Cuelist select
+Channel 3: Open
+Channel 4 Stop
+channel 5 resume
+channnel 6 close
+channel 7 all_off
+channel 8 GO_OFF
+Channel 9 Program settings
+
+
+[240, 127, 127, 2, 1, 1, 49, 50, 0, 49, 247]
