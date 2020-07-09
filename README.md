@@ -13,7 +13,7 @@ After setting the input and output midi ports, the program listens for Note On c
 
 
 #Simple vs. Expanded Mode:
-Due to the limitation of midi, the note and velocity parts of a note on command are limited to 128 values. This severely limits the usability, as every cue and cuelist number in the lighting console woudl have tobe below 128. This is why there are 2 modes. 
+Due to the limitation of midi, the note and velocity parts of a note on command are limited to 128 values. This severely limits the usability, as every cue and cuelist number in the lighting console would have to be below 128. This is why there are 2 modes. 
 
 Expanded Mode: This mode uses both the note and velocity together to give a range of values from 0 to 16384. This works the same way as 16-bit dmx Channels, where the note value would be the coarse channel, and velocity would be the fine channel. The formula in the code is Number = Note * 128 + Velocity. Examples: For a final number of 200, note would be 1, velocity would be 72. A note of 0, and a velocity of 25, would equal a final number of 25. In expanded mode, you must send the cuelist number on Channel 2 Prior to sending the cue numbers on channel 1. The cuelist number is saved until a new cuelist number is sent, so you only have to send it once for multiple go commands in the same list. 
 
