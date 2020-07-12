@@ -206,6 +206,7 @@
 	expSelect: expSelect
 	cmdFormat: cmdFormat
 	devID: devID
+	maMode: maMode
 
 	id: settingsPage 
 
@@ -246,15 +247,15 @@
 			color: (0, 0, 0, 1)
 			text: 'Program Settings'
 			halign: 'center'
-			font_size: '30sp'
+			font_size: '28sp'
 			bold: True
 
 		GridLayout:
 			cols: 2
-			pos_hint: {'center_y': .45, 'center_x': .45}
-			size_hint: (.95, .6)
-			spacing: 10
-			padding: 10
+			pos_hint: {'center_y': .44, 'center_x': .45}
+			size_hint: (.95, .65)
+			spacing: 8
+			padding: 8
 
 			Label: 
 				text: "Input Port: "
@@ -308,7 +309,7 @@
 
 			TextInput:
 				id: cmdFormat
-				text: str(app.midiSession.MSCCmdFormat)
+				text: '{:#04x}'.format(app.midiSession.MSCCmdFormat)
 				font_size: '20sp'
 
 			Label:
@@ -324,9 +325,38 @@
 				text: str(app.midiSession.MSCDeviceID)
 				font_size: '20sp'
 
+			Label:
+				text: "Enable MA2 Mode: "
+				halign: 'right'
+				text_size: (self.size[0] - 200, None)
+				font_size: '20sp'
+				bold: True 
+				color: (0, 0, 0, 1)
+
+			Switch:
+				id: maMode
+				active: app.midiSession.MA
+
+			Label:
+				text: "MA MSC In Mode: "
+				halign: 'right'
+				text_size: (self.size[0] - 200, None)
+				font_size: '20sp'
+				bold: True 
+				color: (0, 0, 0, 1)
+
+
+			Spinner: #Output Port Selector
+				id: MAMSCMode
+				text: app.midiSession.MAMSCMode
+				values: app.midiSession.MAModes
+				on_text: root.maModeSet(MAMSCMode.text)
+
+
+
 		Button:
-			size_hint: (.75, .1)
-			pos_hint: {'center_x': .5, 'y': .05}
+			size_hint: (.65, .085)
+			pos_hint: {'center_x': .5, 'y': .025}
 			text: "Save Changes"
 			font_size: '20sp'
 			bold: True
