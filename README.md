@@ -32,3 +32,19 @@ Channel 7: ALL_OFF. This command ignores note and velocity.
 Channel 8: GO_OFF. This command only requires a cuelist number. In simple mode, the note value is ignored.
 Channel 9 is reserved for program setting changes.
 Channels 10-16 are not used by this program.
+
+
+#MA2 Mode:
+MA2 Mode alters the functionality to conform with GrandMA 2 MSC Format. When enabled, the program will automatically append '.000' to the end of the cue number as required. This, like the normal mode, currently does not support having dotted numbering in your sequence, but MA still requires the cue number to 3 decimals to be sent by MSC. 
+
+In MA2 mode, expanded mode must be enabled, and the Go Command on channel 1 will take the Value from currentCuelist as the Executor and Page if neccessary. 
+
+MA MSC In Mode: This determines what executor the Go command is directed to. If set to 'Default', no executor is required, and it will be sent to the selected executor on the Console. If however, it is set to 'Exec.Page' or 'Exec Page', then Channel 2 will be used to set this before a go command can be sent. To set this, send a Mid Note On to Channel 2. The note number sets the executor, and the velocity sets the executor Page. Currently, this is limited to a maximum number of 127. 
+
+#Current Limitations of this software:
+- Dotted Cue numbers are not supported at this time. This could be implemented, but would make the logic and usage more complex
+- MA Executors are limited to a maximum of 127. Changing this functionality, would require a seperate channel and command for Page and Executor.
+- Currently Only supports the MSC Commands Listed above. More could be implemented, but not sure if this is neccessary
+- stopRepeats is hard coded, this means that the same incoming midi message cannot be sent twice in a row. If this needs to be changed, the value for Midi.stopRepeats must be changed in main.py
+
+
