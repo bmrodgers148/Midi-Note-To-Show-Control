@@ -18,9 +18,8 @@ After setting the input and output midi ports, the program listens for Note On c
 
 
 
-#Simple vs. Expanded Mode:
-Due to the limitation of midi, the note and velocity parts of a note on command are limited to 128 values. This severely limits the usability, as every cue and cuelist number in the lighting console would have to be below 128. This is why there are 2 modes. 
-=======
+
+
 # Simple vs. Expanded Mode:
 Due to the limitation of midi, the note and velocity parts of a note on command are limited to 128 values. This severely limits the usability, as every cue and cuelist number in the lighting console woudl have tobe below 128. This is why there are 2 modes. 
 
@@ -45,29 +44,19 @@ Channel 9 is reserved for program setting changes.
 Channels 10-16 are not used by this program.
 
 
-#MA2 Mode:
+# MA2 Mode:
 MA2 Mode alters the functionality to conform with GrandMA 2 MSC Format. When enabled, the program will automatically append '.000' to the end of the cue number as required. This, like the normal mode, currently does not support having dotted numbering in your sequence, but MA still requires the cue number to 3 decimals to be sent by MSC. 
 
 In MA2 mode, expanded mode must be enabled, and the Go Command on channel 1 will take the Value from currentCuelist as the Executor and Page if neccessary. 
 
 MA MSC In Mode: This determines what executor the Go command is directed to. If set to 'Default', no executor is required, and it will be sent to the selected executor on the Console. If however, it is set to 'Exec.Page' or 'Exec Page', then Channel 2 will be used to set this before a go command can be sent. To set this, send a Mid Note On to Channel 2. The note number sets the executor, and the velocity sets the executor Page. Currently, this is limited to a maximum number of 127. 
 
-#Current Limitations of this software:
+# Current Limitations of this software:
 - Dotted Cue numbers are not supported at this time. This could be implemented, but would make the logic and usage more complex
 - MA Executors are limited to a maximum of 127. Changing this functionality, would require a seperate channel and command for Page and Executor.
 - Currently Only supports the MSC Commands Listed above. More could be implemented, but not sure if this is neccessary
 - stopRepeats is hard coded, this means that the same incoming midi message cannot be sent twice in a row. If this needs to be changed, the value for Midi.stopRepeats must be changed in main.py
 
 
-=======
-- Channel 1: GO
-- Channel 2: Not MSC. This channel is used to choose a cuelist in expanded mode
-- Channel 3: OPEN.   This command only requires a cuelist number. In simple mode, the note value is ignored.
-- Channel 4: STOP.   This command only requires a cuelist number. In simple mode, the note value is ignored.
-- Channel 5: RESUME. This command only requires a cuelist number. In simple mode, the note value is ignored.
-- Channel 6: CLOSE.  This command only requires a cuelist number. In simple mode, the note value is ignored.
-- Channel 7: ALL_OFF. This command ignores note and velocity.
-- Channel 8: GO_OFF. This command only requires a cuelist number. In simple mode, the note value is ignored.
-- Channel 9 is reserved for program setting changes.
-- Channels 10-16 are not used by this program.
+
 
