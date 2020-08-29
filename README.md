@@ -32,16 +32,16 @@ Simple Mode: This mode is limited to 127 cues and cuelists, but it allows for cu
 # Choosing a command type: 
 The command type is determined by the Channel of the incoming midi message. The channels and Command types are as follows:
 
-Channel 1: GO
-Channel 2: Not MSC. This channel is used to choose a cuelist in expanded mode
-Channel 3: OPEN.   This command only requires a cuelist number. In simple mode, the note value is ignored.
-Channel 4: STOP.   This command only requires a cuelist number. In simple mode, the note value is ignored.
-Channel 5: RESUME. This command only requires a cuelist number. In simple mode, the note value is ignored.
-Channel 6: CLOSE.  This command only requires a cuelist number. In simple mode, the note value is ignored.
-Channel 7: ALL_OFF. This command ignores note and velocity.
-Channel 8: GO_OFF. This command only requires a cuelist number. In simple mode, the note value is ignored.
-Channel 9 is reserved for program setting changes.
-Channels 10-16 are not used by this program.
+-Channel 1: GO
+-Channel 2: Not MSC. This channel is used to choose a cuelist in expanded mode
+-Channel 3: OPEN.   This command only requires a cuelist number. In simple mode, the note value is ignored.
+-Channel 4: STOP.   This command only requires a cuelist number. In simple mode, the note value is ignored.
+-Channel 5: RESUME. This command only requires a cuelist number. In simple mode, the note value is ignored.
+-Channel 6: CLOSE.  This command only requires a cuelist number. In simple mode, the note value is ignored.
+-Channel 7: ALL_OFF. This command ignores note and velocity.
+-Channel 8: GO_OFF. This command only requires a cuelist number. In simple mode, the note value is ignored.
+-Channel 9 is reserved for program setting changes.
+-Channels 10-16 are not used by this program.
 
 
 # MA2 Mode:
