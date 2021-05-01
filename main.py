@@ -32,7 +32,7 @@ class midi():  # Handles all Midi input, output, and processing
 			self.MSCDeviceID = '1'
 			self.expandedMode = True
 			self.outPort = 0
-			self.inPort = 1
+			self.inPort = 0
 			self.MA = False
 			self.MAMSCMode = 'Default'
 
@@ -332,20 +332,20 @@ class CalculatorPage(Widget): #Midi Calculator Page
 					f"Note: [color=#4254f5]{cuenote}[/color]\n"
 					f"Velocity: [color=#4254f5]{cuevelocity}[/color]\n\n"
 					f"[color=#993333]NOTE: THIS COMMAND ONLY USES CUE NUMBER. YOU MUST SEND SET CUELIST COMMAND AT START OF NEW CUELIST![/color][/b]")
-				self.resultlabel.font_size = 45
+				self.resultlabel.font_size = 30
 
 			elif(ch ==2): # Set Cuelist
 				self.resultlabel.text = (f"[b]Channel: [color=#4254f5]{ch}[/color]\n" 
 					f"Note: [color=#4254f5]{cuelistnote}[/color]\n"
 					f"Velocity: [color=#4254f5]{cuelistvelocity}[/color]\n\n"
 					f"[color=#993333]NOTE: THIS COMMAND ONLY USES CUELIST NUMBER. YOU MUST SEND SEPERATE GO COMMAND![/color][/b]")
-				self.resultlabel.font_size = 45
+				self.resultlabel.font_size = 30
 			elif(ch >=3 and ch <=8): #Open, Stop, Resume, Close, all_off, Go_off
 				self.resultlabel.text = (f"[b]Channel: [color=#4254f5]{ch}[/color]\n" 
 					f"Note: [color=#4254f5]{cuelistnote}[/color]\n"
 					f"Velocity: [color=#4254f5]{cuelistvelocity}[/color]\n\n"
 					f"[color=#993333]NOTE: THIS COMMAND ONLY USES CUELIST NUMBER.[/color][/b]")
-				self.resultlabel.font_size = 45
+				self.resultlabel.font_size = 30
 			else:
 				self.resultlabel.text = '[b][color=#FF0000]AN ERROR HAS OCCURED[/b][/color]'
 		#Calculations for simple mode
@@ -357,17 +357,17 @@ class CalculatorPage(Widget): #Midi Calculator Page
 						f"Note: [color=#4254f5]{cue}[/color]\n"
 						f"Velocity: [color=#4254f5]{cuelist}[/color]\n\n"
 						f"[color=#993333][/color][/b]")
-					self.resultlabel.font_size = 45
+					self.resultlabel.font_size = 30
 
 				elif(ch ==2): # Set Cuelist
 					self.resultlabel.text = ("[color=#FF0000]This command is only used in Expanded Mode. See readme for details[/color][/b]")
-					self.resultlabel.font_size = 45
+					self.resultlabel.font_size = 30
 				elif(ch >=3 and ch <=8): #Open, Stop, Resume, Close, all_off, Go_off
 					self.resultlabel.text = (f"[b]Channel: [color=#4254f5]{ch}[/color]\n" 
 						f"Note: [color=#4254f5]{cue}[/color]\n"
 						f"Velocity: [color=#4254f5]{cuelist}[/color]\n\n"
 						f"[color=#993333]NOTE: THIS COMMAND ONLY USES CUELIST NUMBER.[/color][/b]")
-					self.resultlabel.font_size = 45
+					self.resultlabel.font_size = 30
 				else:
 					self.resultlabel.text = '[b][color=#FF0000]AN ERROR HAS OCCURED[/b][/color]'
 			#If valid range is exceded, shows error to user
@@ -409,7 +409,7 @@ class MidiApp(App): #Main App for Kivy
 
 		#Set Configuration and defaults for App
 		Window.clearcolor = (.8,.8,.8,0)
-		Window.size = (700, 350)
+		Window.size = (950, 475)
 		self.screen_manager.current = 'Home'
 		
 		return self.screen_manager
