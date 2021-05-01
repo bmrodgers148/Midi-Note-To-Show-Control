@@ -116,10 +116,12 @@ class midi():  # Handles all Midi input, output, and processing
 			if(self.MAMSCMode == 'Exec.Page' or self.MAMSCMode == 'Exec Page'):
 				command = f'{self.cmdLookup[channel]}:{number}.000-{self.currentCuelist}'
 			elif(self.MAMSCMode == 'Default'):
-				print('default')
+				#print('default')
 				command = f'{self.cmdLookup[channel]}:{number}.000'
 			MSCMsg = midiProcess.processAndSend(command, self.MSCDeviceID, self.MSCCmdFormat)
 			self.midiOut.send_message(MSCMsg)
+			print(inbound)
+			print(MSCMsg)
 			mainApp.home_page.lastMessageUpdate(msgType, channel, note, velocity, self.cmdLookup[channel], 
 				inbound, MSCMsg, number, self.currentCuelist)
 
@@ -142,6 +144,9 @@ class midi():  # Handles all Midi input, output, and processing
 					command = self.cmdLookup[channel] + ':' + str(number) + '-' + str(number)
 				MSCMsg = midiProcess.processAndSend(command, self.MSCDeviceID, self.MSCCmdFormat)
 				self.midiOut.send_message(MSCMsg)
+				print(inbound)
+
+				print(MSCMsg)
 				mainApp.home_page.lastMessageUpdate(msgType, channel, note, velocity, self.cmdLookup[channel], 
 					inbound, MSCMsg, number, self.currentCuelist)
 		
@@ -157,6 +162,8 @@ class midi():  # Handles all Midi input, output, and processing
 					command = self.cmdLookup[channel] + ':' + str(note) + '-' + str(velocity)
 				MSCMsg = midiProcess.processAndSend(command, self.MSCDeviceID, self.MSCCmdFormat)
 				self.midiOut.send_message(MSCMsg)
+				print(inbound)
+				print(MSCMsg)
 				mainApp.home_page.lastMessageUpdate(msgType, channel, note, velocity, self.cmdLookup[channel], inbound, MSCMsg, note, velocity)
 
 #changeSettings() : proccesses program setting changes submitted on midi channel 9
@@ -223,7 +230,7 @@ class HomePage(Widget): #Kivy Home Page
 		self.msgType.text = "Type: " + str(type)
 		self.channel.text = f"Channel: [color=#4254f5]{ch}[/color]"
 		self.note.text = ("Note: " + '[color=#4254f5]' + str(n)+ '[/color]'+ 
-			"          Velcoity: " + '[color=#4254f5]' + str(v)+ '[/color]'   )
+			"          Velocity: " + '[color=#4254f5]' + str(v)+ '[/color]'   )
 		self.command.text = "Command: " + '[color=#4254f5]' + str(cmd)+ '[/color]'
 		self.mscdata.text = ("Cue: " + '[color=#4254f5]' + str(cue)+ '[/color]' + "          Cuelist: "
 			+ '[color=#4254f5]' + str(cuelist)+ '[/color]')
@@ -238,6 +245,15 @@ class HomePage(Widget): #Kivy Home Page
 
 		self.rawMidiIn.text = "Raw Midi In: " + '[color=#4254f5]' + str(inboundString)+ '[/color]'
 		self.rawMidiOut.text = "Raw Midi Out: \n" + '[color=#4254f5]' + str(outboundString)+ '[/color]'
+		print(self.msgType.text)
+		print(self.channel.text)
+		print(self.note.text)
+		print(self.command.text)
+		print(self.mscdata.text)
+		print(self.rawMidiIn.text)
+		print(self.rawMidiOut.text)
+		print("_________________________________________\n")
+
 
 #updateLabels(): Updates label text to relfect settings. Run at start, and by kivyUpdateSettings()
 	def updateLabels(self):
@@ -411,8 +427,8 @@ class MidiApp(App): #Main App for Kivy
 if __name__ == "__main__":
 	mainApp = MidiApp()
 	#Set Window Configuration Settings
-	Config.set('graphics', 'resizable', 0)
-	Config.set('graphics', 'borderless', 0)
+	#Config.set('graphics', 'resizable', 1)
+	#Config.set('graphics', 'borderless', 0)
 	Config.set('kivy', 'desktop', 1)
 	Config.write()
 	mainApp.run()

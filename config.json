@@ -4,6 +4,6 @@
  "expandedMode": true,
  "inPort": 3,
  "outPort": 2,
- "MA": true,
+ "MA": false,
  "MAMSCMode": "Exec.Page"
 }
