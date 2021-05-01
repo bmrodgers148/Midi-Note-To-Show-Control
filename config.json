@@ -2,8 +2,8 @@
  "MSCCmdFormat": "0x1",
  "MSCDeviceID": 1,
  "expandedMode": true,
- "inPort": 3,
- "outPort": 2,
+ "inPort": 1,
+ "outPort": 1,
  "MA": false,
  "MAMSCMode": "Exec.Page"
 }
