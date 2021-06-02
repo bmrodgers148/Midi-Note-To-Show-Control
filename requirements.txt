@@ -14,4 +14,4 @@ pypiwin32==223
 python-rtmidi==1.4.9
 pywin32==300
 requests==2.25.1
-urllib3==1.26.4
+urllib3==1.26.5
